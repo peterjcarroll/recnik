@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <input [(ngModel)]="searchWord" type="text" class="form-control" placeholder="Serbian word">
+                <input id='searchWord' [(ngModel)]="searchWord" type="text" class="form-control" placeholder="Serbian word">
             </div>
         </div>
         <div class="col-md-6">
@@ -16,11 +16,11 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <button class="btn btn-default">Č</button>
-            <button class="btn btn-default">Ć</button>
-            <button class="btn btn-default">Đ</button>
-            <button class="btn btn-default">Š</button>
-            <button class="btn btn-default">Ž</button>
+            <button (click)="insertLetter('č')" class="btn btn-default">Č</button>
+            <button (click)="insertLetter('ć')" class="btn btn-default">Ć</button>
+            <button (click)="insertLetter('đ')" class="btn btn-default">Đ</button>
+            <button (click)="insertLetter('š')" class="btn btn-default">Š</button>
+            <button (click)="insertLetter('ž')" class="btn btn-default">Ž</button>
         </div>
     </div>
 </div>

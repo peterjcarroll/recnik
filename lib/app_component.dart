@@ -3,6 +3,7 @@
 
 import 'package:angular2/core.dart';
 import 'package:angular2/common.dart';
+import 'dart:html';
 
 @Component(
     selector: 'my-app',
@@ -30,6 +31,12 @@ class AppComponent
     }
 
     return newAltWord;
+  }
+
+  insertLetter(inLetter){
+    searchWord += inLetter;
+    var e = document.getElementById('searchWord');
+    e.focus();
   }
 
   bool isDigraph(inChar, inNextChar){
