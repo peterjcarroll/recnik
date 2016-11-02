@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Serbian-English Dictionary</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <input [(ngModel)]="searchWord" type="text" class="form-control" placeholder="Serbian word">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <p class="form-control-static">{{getAltWord()}}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <button class="btn btn-default">Č</button>
+            <button class="btn btn-default">Ć</button>
+            <button class="btn btn-default">Đ</button>
+            <button class="btn btn-default">Š</button>
+            <button class="btn btn-default">Ž</button>
+        </div>
+    </div>
+</div>
