@@ -4,15 +4,26 @@
 import 'package:angular2/core.dart';
 import 'package:angular2/common.dart';
 import 'dart:html';
+import 'api_service.dart';
 
 @Component(
     selector: 'my-app',
     styleUrls: const ['app_component.css'],
     templateUrl: 'app_component.html',
-    directives: const [FORM_DIRECTIVES])
+    directives: const [FORM_DIRECTIVES],
+    providers: const [ApiService])
 class AppComponent 
 {
+  final ApiService _api;
   String searchWord = '';
+  List<String> suggestedWords = [];
+  
+  AppComponent(this._api);
+
+  getSuggestions() async {
+    if(searchWord.length == 0) return [];
+    suggestedWords = await _api.getSuggestions(searchWord);
+  }
   
   String getAltWord(){
     String newAltWord = '';

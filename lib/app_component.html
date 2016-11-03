@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <input id='searchWord' [(ngModel)]="searchWord" type="text" class="form-control" placeholder="Serbian word">
+                <input id='searchWord' [(ngModel)]="searchWord" (keyup)="getSuggestions()" type="text" class="form-control" placeholder="Serbian word">
             </div>
         </div>
         <div class="col-md-6">
@@ -21,6 +21,11 @@
             <button (click)="insertLetter('đ')" class="btn btn-default">Đ</button>
             <button (click)="insertLetter('š')" class="btn btn-default">Š</button>
             <button (click)="insertLetter('ž')" class="btn btn-default">Ž</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <p *ngFor="let word of suggestedWords">{{word}}</p>
         </div>
     </div>
 </div>
