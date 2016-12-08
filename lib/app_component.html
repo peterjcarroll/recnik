@@ -23,9 +23,15 @@
             <button (click)="insertLetter('ž')" class="btn btn-default">Ž</button>
         </div>
     </div>
-    <div class="row">
+    <div class="row" [hidden]="definitions.length > 0">
         <div class="col-md-6">
-            <p *ngFor="let word of suggestedWords">{{word}}</p>
+            <p *ngFor="let word of suggestedWords"><button class="btn btn-link" (click)="lookupWord(word)">{{word}}</button></p>
+        </div>
+    </div>
+    <div class="row" *ngFor="let definition of definitions">
+        <div class="col-md-6">
+            <p>{{definition}}</p>
+            <p>Source: <a href="https://en.wiktionary.org/wiki/{{searchWord}}#Serbo-Croatian" target="_blank">wiktionary.org</a></p>
         </div>
     </div>
 </div>

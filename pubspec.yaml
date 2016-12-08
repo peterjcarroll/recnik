@@ -5,7 +5,8 @@ environment:
   sdk: '>=1.19.0 <2.0.0'
 dependencies:
   angular2: ^2.0.0
-  bootstrap:
+  ng_bootstrap: any
+  sass_transformer: any
   http:
 dev_dependencies:
   browser: ^0.10.0
@@ -21,6 +22,4 @@ transformers:
     resolved_identifiers:
         BrowserClient: 'package:http/browser_client.dart'
 - dart_to_js_script_rewriter
-- bootstrap:
-    url: //maxcdn.bootstrapcdn.com/bootstrap/{{version}}
-    version: 3.3.7
+- sass_transformer

@@ -3,6 +3,7 @@
 
 import 'package:angular2/core.dart';
 import 'package:angular2/common.dart';
+import 'package:ng_bootstrap/ng_bootstrap.dart';
 import 'dart:html';
 import 'api_service.dart';
 
@@ -10,19 +11,26 @@ import 'api_service.dart';
     selector: 'my-app',
     styleUrls: const ['app_component.css'],
     templateUrl: 'app_component.html',
-    directives: const [FORM_DIRECTIVES],
+    directives: const [FORM_DIRECTIVES, BS_DIRECTIVES],
     providers: const [ApiService])
 class AppComponent 
 {
   final ApiService _api;
   String searchWord = '';
   List<String> suggestedWords = [];
-  
+  List<Map> definitions = [];
+
   AppComponent(this._api);
 
   getSuggestions() async {
     if(searchWord.length == 0) return [];
+    definitions = [];
     suggestedWords = await _api.getSuggestions(searchWord);
+  }
+
+  lookupWord(String word) async {
+    searchWord = word;
+    definitions = await _api.lookupWord(word);
   }
   
   String getAltWord(){
@@ -55,7 +63,7 @@ class AppComponent
       return ['J', 'j'].contains(inNextChar);
     }
     else if(['D','d'].contains(inChar)){
-      return ['Ž', 'ž', 'J', 'j'].contains(inNextChar);
+      return ['Ž', 'ž'].contains(inNextChar);
     }
     return false;
   }
@@ -69,10 +77,7 @@ class AppComponent
       case 'V': return 'В';
       case 'G': return 'Г';
       case 'D': return 'Д';
-      case 'Đ':
-      case 'Dj':
-      case 'DJ': 
-        return 'Ђ';
+      case 'Đ': return 'Ђ';
       case 'E': return 'Е';
       case 'Ž': return 'Ж';
       case 'Z': return 'З';
@@ -110,10 +115,7 @@ class AppComponent
       case 'v': return 'в';
       case 'g': return 'г';
       case 'd': return 'д';
-      case 'đ':
-      case 'dj':
-      case 'dJ':
-        return 'ђ';
+      case 'đ': return 'ђ';
       case 'e': return 'е';
       case 'ž': return 'ж';
       case 'z': return 'з';
