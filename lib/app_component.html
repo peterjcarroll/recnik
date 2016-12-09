@@ -28,10 +28,27 @@
             <p *ngFor="let word of suggestedWords"><button class="btn btn-link" (click)="lookupWord(word)">{{word}}</button></p>
         </div>
     </div>
-    <div class="row" *ngFor="let definition of definitions">
-        <div class="col-md-6">
-            <p>{{definition}}</p>
-            <p>Source: <a href="https://en.wiktionary.org/wiki/{{searchWord}}#Serbo-Croatian" target="_blank">wiktionary.org</a></p>
+    <div class="row" *ngFor="let definition of definitions">        
+        <div class="col-md-12">
+            <div class="container">
+                 <div class="row" *ngFor="let wordDef of definition['definitions']">
+                    <div class="col-md-1"><p>{{searchWord}}</p></div>
+                    <div class="col-md-1"><p>{{wordDef['partOfSpeech']}}</p></div>
+                    <div class="col-md-10">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12"><p>{{wordDef['text']}}</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>{{definition}}</p>
+                        <p>Source: <a href="https://en.wiktionary.org/wiki/{{searchWord}}#Serbo-Croatian" target="_blank">wiktionary.org</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
